@@ -1,0 +1,58 @@
+/* General Reset */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #c2bcbc4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Background Layer */
+.background-layer img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+/* Button */
+.button {
+    padding: 20px 40px;
+    background-color: #01AB08;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #018f06;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: #017a05;
+    transform: scale(1);
+}
+
+/* Made By Text */
+.madeBy {
+    font-weight: 600;
+    font-size: 10px;
+    color: #858585;
+    margin-top: 10rem;
+}

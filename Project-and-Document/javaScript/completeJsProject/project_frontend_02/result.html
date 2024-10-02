@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Group 4.svg">
+    <title>QuizeAnalysis</title>
+    <link rel="stylesheet" href="result.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="background"><img src="Group 4.svg" alt="Quiz Time"></div>
+        <h2>Result</h2>
+
+        <div class="background-analysis">
+            <p id="score" class="box">00/00</p>
+            <img id="progressEllipse" src="Ellipse 3.svg" alt="Ellipse">
+        </div>
+
+        <h1>“Keep learning, you have a good score!”</h1>
+        <button class="button">
+            <a style="color: white;"> <<< Retry </a>
+         </button> 
+
+         <h3>Share your score:</h3>
+         <div class="icon">
+            <img src="🦆 icon _Instagram.png" alt="Instagram" onclick="redirectTo('Instagram')" style="cursor: pointer;">
+            <img src="icons-whatsapp.png" alt="Whatsapp" onclick="redirectTo('Whatsapp')" style="cursor: pointer;">
+            <img src="🦆 icon _LinkedIn_.jpg" alt="LinkedIn" onclick="redirectTo('LinkedIn')" style="cursor: pointer;">
+         </div>
+
+         <p class="madeBy"> Made with ❤️24  by Ankit Kumar Pal </p> 
+        </div>
+</body>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const scoreElement = document.getElementById('score');
+    const ellipseElement = document.getElementById('progressEllipse');
+
+    // Fetch correct answers and total questions from local storage
+    const totalQuestions = parseInt(localStorage.getItem('totalQuestions'), 10);
+    const correctAnswers = parseInt(localStorage.getItem('correctAnswers'), 10);
+    const wrongAnswers = totalQuestions - correctAnswers;
+
+    // Update score display
+    scoreElement.textContent = `${correctAnswers}/${totalQuestions}`;
+
+    // Calculate the degree for correct and wrong answers
+    const correctDegree = (correctAnswers / totalQuestions) * 360;
+    const wrongDegree = 360 - correctDegree;
+
+    // Visualize the progress with color
+    ellipseElement.style.backgroundImage = `conic-gradient(
+        green 0deg ${correctDegree}deg, 
+        red ${correctDegree}deg ${360}deg
+    )`;
+
+    ellipseElement.style.transition = 'transform 1s ease-in-out';
+});
+
+const buttonEvent = document.querySelector('button');
+
+buttonEvent.addEventListener('click', function(){
+    window.location.href = 'quiz1.html';
+})
+
+function redirectTo(platform) {
+            let url = '';
+            switch(platform) {
+                case 'Instagram':
+                    url = 'https://www.Instagram.com';
+                    break;
+                case 'Whatsapp':
+                    url = 'https://www.Whatsapp.com';
+                    break;
+                case 'LinkedIn':
+                    url = 'https://www.LinkedIn.com';
+                    break;
+                default:
+                    alert('Unknown platform');
+                    return;
+            }
+            window.open(url, '_blank');  // Opens in new tab
+        }
+
+
+</script>
+</html>
